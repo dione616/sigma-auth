@@ -1,4 +1,3 @@
-import colors from "colors";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import bodyParser from "body-parser";

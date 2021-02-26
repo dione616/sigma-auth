@@ -1,5 +1,4 @@
 require("dotenv").config();
-import colors from "colors";
 import mongoose from "mongoose";
 
 export const connectDatabase = async () => {
@@ -15,9 +14,9 @@ export const connectDatabase = async () => {
       }
     )
     .then(() => {
-      console.log(colors.blue(`[mongodb] is connected`));
+      console.log(`[mongodb] is connected`);
     })
     .catch((err) => {
-      console.log(colors.red(`[mongodb] error ${err}`));
+      console.log(`[mongodb] error ${err}`);
     });
 };

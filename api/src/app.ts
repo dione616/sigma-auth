@@ -1,11 +1,11 @@
 import express from "express";
-import colors from "colors";
 import bodyParser from "body-parser";
 import cors from "cors";
 import { connectDatabase } from "./database";
 import { register } from "./routes/register";
 import { login } from "./routes/login";
 import session from "express-session";
+import path from "path";
 
 declare module "express-session" {
   export interface SessionData {
@@ -39,14 +39,21 @@ app.use(
   })
 );
 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(`${__dirname}/client`));
+}
+app.use(express.static(`${__dirname}/client`));
+app.get("*", (req, res) => {
+  res.sendFile(`${__dirname}/client/index.html`);
+});
+
 app.get(`/`, (req, res) => {
   return res.status(200).send(`<h1>Hello World!</h1>`);
 });
 
-/* app.get(loginRoute); */
 app.use(register);
 app.use(login);
 
 app.listen(PORT, () => {
-  console.log(colors.blue(`[app]:is running on http://localhost:${PORT}`));
+  console.log(`[app]:is running on http://localhost:${PORT}`);
 });

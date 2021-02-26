@@ -1,5 +1,5 @@
 import express from "express";
-import colors from "colors";
+
 import bodyParser from "body-parser";
 import { User } from "../schemas/UserSchema";
 import bcrypt from "bcrypt";
@@ -24,7 +24,7 @@ register.post(`/register`, async (req, res) => {
 
   if (firstname && lastname && email && password && repeat_password) {
     const user = await User.findOne({ email }).catch((err) => {
-      console.log(colors.red(err));
+      console.log(err);
       res
         .status(401)
         .send({ success: false, error: "Something wrong with DB" });
