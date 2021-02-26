@@ -24,7 +24,6 @@ register.post(`/register`, async (req, res) => {
 
   if (firstname && lastname && email && password && repeat_password) {
     const user = await User.findOne({ email }).catch((err) => {
-      console.log(err);
       res
         .status(401)
         .send({ success: false, error: "Something wrong with DB" });

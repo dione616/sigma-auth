@@ -54,6 +54,6 @@ app.get(`/`, (req, res) => {
 app.use(register);
 app.use(login);
 
-app.listen(PORT, () => {
+app.listen(process.env.PORT || 3002, () => {
   console.log(`[app]:is running on http://localhost:${PORT}`);
 });

@@ -23,7 +23,7 @@ export const Input = styled.input`
   display: block;
   font-size: 18px;
   margin: 20px 0;
-  border: 1px solid black;
+  border: 1px solid red;
   background: #ffffff8c;
 `;
 export const SubmitButton = styled.button`

@@ -15,8 +15,7 @@ import { Context } from "../../lib/types";
 
 const Register = ({ context }: { context: Context }) => {
   const d = React.useContext(AuthAPIContext);
-  console.log(`d is :`);
-  console.log(d);
+
   const [state] = useState({
     firstname: "",
     lastname: "",
@@ -25,7 +24,6 @@ const Register = ({ context }: { context: Context }) => {
     repeat_password: "",
   });
   const [res, setRes] = useState();
-  console.log(res);
 
   const registerSuccess = () => {
     if (res) {
@@ -75,8 +73,6 @@ const Register = ({ context }: { context: Context }) => {
               ),
           })}
           onSubmit={(values, actions) => {
-            console.log(values, actions);
-
             d.register(
               values.firstname,
               values.lastname,
@@ -146,11 +142,6 @@ const Register = ({ context }: { context: Context }) => {
                     ? true
                     : false
                 }
-                onClick={() => {
-                  /* setTimeout(() => {
-                    
-                  }, 3000); */
-                }}
                 type='submit'
               >
                 Submit

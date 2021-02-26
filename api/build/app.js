@@ -38,6 +38,6 @@ app.get("/", function (req, res) {
 });
 app.use(register_1.register);
 app.use(login_1.login);
-app.listen(PORT, function () {
+app.listen(process.env.PORT || 3002, function () {
     console.log("[app]:is running on http://localhost:" + PORT);
 });

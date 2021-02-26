@@ -2,14 +2,12 @@ import React, { useEffect, useState } from "react";
 import { LoginTitle, Wrapper, LoginCard, Circle, TextLink } from "./styles";
 import { SubmitButton } from "../button/submit/styles";
 import { Field, Form, Formik } from "formik";
-import axios from "axios";
 import * as Yup from "yup";
 import ValidationError from "../generic/error";
 import Error from "../generic/error";
 import { Redirect } from "react-router-dom";
-import { Context, LoginResponse } from "../../lib/types";
+import { Context } from "../../lib/types";
 import { Err } from "../generic/error/styles";
-import { AuthAPIContext } from "../../API/auth";
 
 const Login = ({ context }: { context: Context }) => {
   const [state, setState] = useState({
@@ -74,11 +72,6 @@ const Login = ({ context }: { context: Context }) => {
 
               <SubmitButton
                 disabled={errors.email ? true : false}
-                onClick={() => {
-                  /* setTimeout(() => {
-                    
-                  }, 3000); */
-                }}
                 type='submit'
               >
                 Submit

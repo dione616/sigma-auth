@@ -12,9 +12,6 @@ import Tweets from "../tweets";
 import { AppWrapper } from "./styles";
 
 const App = ({ context }: { context: Context }) => {
-  console.log(`props`);
-  console.log(context);
-
   return (
     <AppWrapper>
       <Navigation context={context} />

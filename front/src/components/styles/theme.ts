@@ -15,8 +15,6 @@ export const fonts = {
 };
 
 export const theme: DefaultTheme = {
-  /* colors, */
   templates,
   fonts,
-  /* dimensions */
 };

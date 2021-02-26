@@ -28,12 +28,10 @@ const AuthAPIContextProvider = ({ children }: { children: any }) => {
     password: string;
   }): Promise<Viewer | null> => {
     const response = await axios.post(`/login`, values).then((res) => {
-      console.log(`RESPONSE1`);
-      console.log(res);
       if (res.data.user) {
         setUser(res.data.user);
         setError(false);
-        // store the user in localStorage
+
         localStorage.setItem("user", JSON.stringify(res.data.user));
       } else {
         setError(res.data.error);
@@ -42,14 +40,6 @@ const AuthAPIContextProvider = ({ children }: { children: any }) => {
         }, 1000);
       }
 
-      /* setState((prev) => {
-        return { ...prev, errors: true };
-      });
-      setTimeout(() => {
-        setState((prev) => {
-          return { ...prev, errors: false };
-        });
-      }, 3000); */
       return res.data;
     });
     return response;
@@ -71,12 +61,10 @@ const AuthAPIContextProvider = ({ children }: { children: any }) => {
         repeat_password,
       })
       .then((res) => {
-        console.log(res.data);
-
         if (res.data.user === 200) {
           setUser(res.data.user);
           setError(false);
-          // store the user in localStorage
+
           localStorage.setItem("user", JSON.stringify(res.data.user));
         } else {
           setError(res.data.error);

@@ -26,14 +26,6 @@ export const LoginTitle = styled.h1`
   z-index: 2;
   ${({ theme }) => theme.fonts.font1};
 `;
-export const Input = styled.input`
-  width: 97%;
-  display: block;
-  font-size: 18px;
-  margin: 20px 0;
-  border: 1px solid black;
-  background: #ffffff8c;
-`;
 
 interface Props {
   size: number;

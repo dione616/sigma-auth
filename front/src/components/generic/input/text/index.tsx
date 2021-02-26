@@ -1,6 +1,6 @@
 import { useField } from "formik";
 import React from "react";
-import { Input } from "../../../login/styles";
+import { Input } from "../../../register/styles";
 
 export const TextInput = ({ props }: any) => {
   const [field, meta] = useField(props);
@@ -8,7 +8,7 @@ export const TextInput = ({ props }: any) => {
     <div>
       <Input {...field} {...props} />
       {meta.touched && meta.error ? (
-        <div className="error">{meta.error}</div>
+        <div className='error'>{meta.error}</div>
       ) : null}
     </div>
   );
