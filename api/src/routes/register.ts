@@ -24,14 +24,12 @@ register.post(`/register`, async (req, res) => {
 
   if (firstname && lastname && email && password && repeat_password) {
     const user = await User.findOne({ email }).catch((err) => {
-      res
-        .status(401)
-        .send({ success: false, error: "Something wrong with DB" });
+      res.send({ success: false, error: "Something wrong with DB" });
     });
 
     if (user) {
       if (user.email === email) {
-        res.status(401).send({ success: false, error: "Email exists" });
+        res.send({ success: false, error: "Email exists" });
       }
     } else {
       const token = jwt.sign(

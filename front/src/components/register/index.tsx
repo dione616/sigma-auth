@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useState } from "react";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
@@ -6,16 +5,12 @@ import { Wrapper, Circle, TextLink } from "./styles";
 import { SubmitButton } from "../button/submit/styles";
 import { LoginCard, LoginTitle } from "../login/styles";
 import ValidationError from "../generic/error";
-
+import Error from "../generic/error";
 import Success from "../generic/succeess";
-
 import { Redirect } from "react-router-dom";
-import { AuthAPIContext } from "../../API/auth";
 import { Context } from "../../lib/types";
 
 const Register = ({ context }: { context: Context }) => {
-  const d = React.useContext(AuthAPIContext);
-
   const [state] = useState({
     firstname: "",
     lastname: "",
@@ -23,7 +18,7 @@ const Register = ({ context }: { context: Context }) => {
     password: "",
     repeat_password: "",
   });
-  const [res, setRes] = useState();
+  const [res] = useState();
 
   const registerSuccess = () => {
     if (res) {
@@ -73,18 +68,14 @@ const Register = ({ context }: { context: Context }) => {
               ),
           })}
           onSubmit={(values, actions) => {
-            d.register(
+            context.register(
               values.firstname,
               values.lastname,
               values.email,
               values.password,
               values.repeat_password
             );
-
-            setTimeout(() => {
-              actions.resetForm();
-              actions.setSubmitting(false);
-            }, 1);
+            context.isLoading = true;
           }}
         >
           {({ errors, touched }) => (
@@ -153,6 +144,7 @@ const Register = ({ context }: { context: Context }) => {
         <Circle size={150} top={80} left={65} color='#007cb0de' />
         <Circle size={60} top={28} left={48} color='#007cb0de' />
         <Circle size={20} top={5} left={75} color='#007cb0de' />
+        {context.error && <Error>{context.error}</Error>}
         <TextLink href='/login'>Already have one?Login here.</TextLink>
       </LoginCard>
       <svg

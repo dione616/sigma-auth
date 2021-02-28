@@ -61,13 +61,17 @@ const AuthAPIContextProvider = ({ children }: { children: any }) => {
         repeat_password,
       })
       .then((res) => {
-        if (res.data.user === 200) {
+        if (res.data.user) {
           setUser(res.data.user);
           setError(false);
 
           localStorage.setItem("user", JSON.stringify(res.data.user));
         } else {
           setError(res.data.error);
+
+          setTimeout(() => {
+            setError(false);
+          }, 1000);
         }
 
         return res.data;
